@@ -1,8 +1,7 @@
 import React from 'react'
 import './Header.scss'
 import { motion } from "framer-motion";
-// import myImg from '../../assets/me.jpeg'
-import myImg from '../../assets/me.png'
+import myImg2 from '../../assets/myImage.png'
 import circle_bg from '../../assets/circle.svg'
 import node from "../../assets/node.png";
 import nextjs3 from "../../assets/nextjs3.png";
@@ -52,7 +51,7 @@ const Header = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="app__header-img"
       >
-        <img src={myImg} alt="profile_bg" />
+        <img src={myImg2} alt="profile_bg" />
         <motion.img
           whileInView={{ scale: [0, 1] }}
           transition={{ duration: 1, ease: 'easeInOut' }}

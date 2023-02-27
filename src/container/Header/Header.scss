@@ -184,14 +184,15 @@
      position: relative;
 
      img {
-         width: 60%;
+         width: 67%;
          object-fit: fill;
          z-index: 1;
+         border-radius:15% 7%;
      }
 
      .overlay_circle {
          position: absolute;
-         left: 120px;
+         left: 70px;
          right: 0;
          bottom: 0;
          z-index: 0;
@@ -201,8 +202,9 @@
 
      @media screen and (max-width: 1200px) {
          margin: 1rem 1rem;
-          display: flex;
+         display: flex;
          align-items: center;
-         justify-content: center;;
+         justify-content: center;
+         ;
      }
  }
