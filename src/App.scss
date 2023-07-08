@@ -178,9 +178,16 @@
 }
 
 @media screen and (max-width: 500px) {
-  .app__navigation,
-  .app__social {
+
+  .app__navigation {
     display: none;
+  }
+
+  .app__social {
+    width: 1%;
+    margin-left: 6px;
+    position: absolute;
+    top: 115px;
   }
 
   .copyright {
