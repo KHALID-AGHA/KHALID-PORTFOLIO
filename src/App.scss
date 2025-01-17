@@ -102,7 +102,6 @@
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-
   padding: 1rem;
 
   div {
@@ -169,6 +168,10 @@
     &:hover {
       background-color: var(--secondary-color);
     }
+    &:focus-visible {
+      background-color: var(--secondary-color);
+      outline: white;
+    }
 
     @media screen and (min-width: 2000px) {
       width: 20px;
@@ -178,7 +181,6 @@
 }
 
 @media screen and (max-width: 500px) {
-
   .app__navigation {
     display: none;
   }
