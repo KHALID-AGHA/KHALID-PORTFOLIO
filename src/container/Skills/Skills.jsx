@@ -18,7 +18,6 @@ const Skills = () => {
       const data = await client.fetch(query);
       await data.sort(() => Math.random() * 100 - 50);
       await setSkill(data);
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
