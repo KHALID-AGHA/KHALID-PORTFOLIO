@@ -1,5 +1,4 @@
-import React from "react";
-import { BsWhatsapp, BsLinkedin, BsGithub } from "react-icons/bs";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 const SocialMedia = () => {
   return (

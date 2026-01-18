@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { AiFillEye } from "react-icons/ai";
 import { client, urlFor } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
