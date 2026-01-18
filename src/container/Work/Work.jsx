@@ -51,9 +51,8 @@ const Work = () => {
           <div
             key={index}
             onClick={() => handleWorkFilter(item)}
-            className={`app__work-filter-item app__flex p-text ${
-              activeFilter === item ? "item-active" : ""
-            }`}
+            className={`app__work-filter-item app__flex p-text ${activeFilter === item ? "item-active" : ""
+              }`}
           >
             {item}
           </div>
@@ -65,17 +64,18 @@ const Work = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="app__work-portfolio"
       >
-        {filterWork
-          .filter((val) => {
-            if (activeFilter === val.category) {
-              return filterWork;
-            }
-            if (activeFilter === val.hosted) {
-              return filterWork;
-            } else if (activeFilter === "all") {
-              return val;
-            }
-          })
+        {filterWork.filter((val) => {
+          if (activeFilter.toLowerCase() === "all") {
+            return true;
+          }
+          if (activeFilter === val.category) {
+            return true;
+          }
+          if (activeFilter === val.hosted) {
+            return true;
+          }
+          return false;
+        })
           .map((work, index) => (
             <div className="app__work-item app__flex" key={index}>
               <div className="app__work-img app__flex">
