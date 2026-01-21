@@ -36,21 +36,27 @@ const Contact = () => {
     return (
         <>
             <h2 className="head-text">
-                <span>Take a coffee </span> &amp; <span>Chat with me </span>
+                <span> Reach out </span> &amp; <span>let's connect </span>
             </h2>
             <div className="app__contact-cards">
-                <div className="app__contact-card ">
+
+                <a href="mailto:mkhalid.k.agha@gmail.com" target={'_blank'} rel='noreferrer' className="app__contact-card ">
                     <img src={emailimg} alt="email" />
-                    <a href="mailto:mkhalid.k.agha@gmail.com" className="p-text">mkhalid.k.agha@gmail.com</a>
-                </div>
-                <div className="app__contact-card">
+                    <p className="p-text">mkhalid.k.agha@gmail.com</p>
+                </a>
+                <a href='https://wa.me/+96176318263' target={'_blank'} rel='noreferrer' className="app__contact-card">
                     <img src={mobile} alt="phone" />
-                    <a href='https://wa.me/+96176318263' target={'_blank'} rel='noreferrer' className="p-text">+961 76 318 263</a>
-                </div>
+                    <p className="p-text">+961 76 318 263</p>
+                </a>
+                <a href='https://wa.me/+963999452015' target={'_blank'} rel='noreferrer' className="app__contact-card">
+                    <img src={mobile} alt="phone" />
+                    <p className="p-text">+963 999 452 015</p>
+                </a>
+                
             </div>
             {!isFormSubmitted ? (
                 <form onSubmit={handleSubmit} ref={form} className="app__contact-form app__flex">
-
+                    <span >Drop me a message</span>
                     <div className="app__flex">
                         <input className="p-text" type="text" required placeholder="Your Name" name="user_name" value={username} onChange={handleChangeInput} />
                     </div>

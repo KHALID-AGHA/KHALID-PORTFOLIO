@@ -1,48 +1,53 @@
 .app__about {
-    flex: 1;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 100px;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 100px;
 }
 
 .app__profiles {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .app__profile-item {
-    width: 190px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    margin: 2rem;
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 2rem;
 
-    h2 {
-        color: var(--secondary-color);
-    }
+  h2 {
+    color: var(--secondary-color);
+  }
 
-    p {
-        font-weight: bold;
-    }
+  p {
+    font-weight: bold;
+  }
+
+  img {
+    width: 100%;
+    height: 170px;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+
+  @media screen and (min-width: 2000px) {
+    width: 370px;
+    margin: 2rem 4rem;
 
     img {
-        width: 100%;
-        height: 170px;
-        border-radius: 15px;
-        object-fit: cover;
+      height: 350px;
     }
+  }
+}
 
-    @media screen and (min-width:2000px) {
-        width: 370px;
-        margin: 2rem 4rem;
-
-        img {
-            height: 350px;
-
-        }
-    }
+    @media screen and (max-width: 900px) {
+  .app__profile-item {
+    width: 100%;
+  }
 }
