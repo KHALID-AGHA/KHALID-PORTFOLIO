@@ -43,11 +43,9 @@ const Numbers = () => {
                             <div key={ex.number + index} className="app__flex"
                             >
                                 <CountUp
-                                    start={0} end={ex.number} duration={2} >
-                                    {({ countUpRef, start }) => (
-                                        <VisibilitySensor onChange={start}>
-                                            <span ref={countUpRef} />
-                                        </VisibilitySensor>
+                                    start={0} end={ex.number} duration={2} enableScrollSpy={true}>
+                                    {({ countUpRef }) => (
+                                        <span ref={countUpRef} />
                                     )}
                                 </CountUp>
                                 <span>+</span>

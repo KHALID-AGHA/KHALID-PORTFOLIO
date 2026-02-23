@@ -1,10 +1,11 @@
 
-import React, { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
 import AppWrapper from '../../Wrapper/AppWrapper';
 import MotionWrap from '../../Wrapper/MotionWrapper';
 import emailimg from "../../assets/email.png";
-import mobile from "../../assets/mobile.png";
-import emailjs from '@emailjs/browser';
+import lebanon from "../../assets/lebanon.png";
+import syria from "../../assets/syria.png";
 import './Contact.scss';
 
 const Contact = () => {
@@ -45,11 +46,11 @@ const Contact = () => {
                     <p className="p-text">mkhalid.k.agha@gmail.com</p>
                 </a>
                 <a href='https://wa.me/+96176318263' target={'_blank'} rel='noreferrer' className="app__contact-card">
-                    <img src={mobile} alt="phone" />
+                    <img src={lebanon} alt="Lebanon phone" />
                     <p className="p-text">+961 76 318 263</p>
                 </a>
                 <a href='https://wa.me/+963999452015' target={'_blank'} rel='noreferrer' className="app__contact-card">
-                    <img src={mobile} alt="phone" />
+                    <img src={syria} alt="Syria phone" />
                     <p className="p-text">+963 999 452 015</p>
                 </a>
                 

@@ -24,7 +24,7 @@ const Work = () => {
 
     setTimeout(() => {
       setAnimateCard({ y: 0, opacity: 1 });
-    }, 500);
+    }, 200);
   };
 
   return (

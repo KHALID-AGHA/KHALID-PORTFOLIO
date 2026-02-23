@@ -6,40 +6,81 @@ import MotionWrap from "../../Wrapper/MotionWrapper";
 import "./Skills.scss";
 
 const Skills = () => {
-  const [skill, setSkill] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [filterSkills, setFilterSkills] = useState([])
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
 
   useEffect(() => {
-    getSkills();
+    const query = '*[_type=="skills"]';
+    client.fetch(query).then((data) => {
+      data.sort(() => Math.random() * 100 - 50);
+      setSkills(data);
+      setFilterSkills(data);
+    });
   }, []);
 
-  const getSkills = async () => {
-    try {
-      const query = '*[_type=="skills"]';
-      const data = await client.fetch(query);
-      await data.sort(() => Math.random() * 100 - 50);
-      await setSkill(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const handleSkillsFilter = (item) => {
+    setActiveFilter(item);
+    setAnimateCard({ y: 100, opacity: 0 });
 
+    setTimeout(() => {
+      setAnimateCard({ y: 0, opacity: 1 });
+
+      if (item === 'all') {
+        setFilterSkills(skills);
+      } else {
+        setFilterSkills(skills.filter((skill) => skill.tags?.includes(item)));
+      }
+    }, 200);
+  }
   return (
     <>
       <h2 className="head-text">
         <span>Skills </span> &amp; <span>Experience </span>
       </h2>
-
+      <div className="app__skills-filter">
+        {["all",
+          "core",
+          "frontend",
+          "backend",
+          "frameworks",
+          "libraries",
+          "architecture",
+          "database",
+          "cloud-services",
+          "styling",
+          "design-systems",
+          "development-tools",
+          "environment",
+          "project-management",
+          "version-control"]
+          .map((item, index) => (
+            <div
+              onClick={() => handleSkillsFilter(item)}
+              className={`app__skills-filter-item app__flex p-text ${activeFilter === item ? "item-active" : ""}`}
+              key={index}>{item}</div>
+          )
+          )}
+      </div>
       <div className="app__skills-container">
-        <motion.div className="app__skills-list">
-          {skill.map((skill, index) => (
+        <motion.div
+          animate={animateCard}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          className="app__skills-list">
+          {filterSkills.map((skill, index) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
               className="app__skills-item app__flex"
               key={skill.name + index}
+
             >
               <div className="app__flex">
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                <img src={urlFor(skill.icon).url()} alt={skill.name}
+                  crossOrigin="anonymous"
+                  loading="lazy"
+                />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>
