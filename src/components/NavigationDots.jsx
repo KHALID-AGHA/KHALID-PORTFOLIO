@@ -1,4 +1,3 @@
-import React from 'react'
 
 const NavigationDots = ({ active }) => {
     return (
@@ -11,9 +10,8 @@ const NavigationDots = ({ active }) => {
                     key={item + index}
                     className="app__navigation-dot"
                     style={active === item ? { backgroundColor: '#313BAC' } : {}}
-                    aria-label={`Maps to ${item}`}
+                    aria-label={`Go to ${item} section`}
                 >
-                    {""}
                 </a>
             ))}
         </div>

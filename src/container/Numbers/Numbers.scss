@@ -54,6 +54,10 @@
     font-size: 2rem;
     color: var(--secondary-color);
     font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    &:hover {
+      transform: translateY(-5px);
+    }
 
     span:nth-child(2) {
       margin-top: -1.5rem;
@@ -121,14 +125,15 @@
     img {
       width: 100%;
       height: auto;
-      //   border-radius: 50%;
       object-fit: cover;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       filter: grayscale(1);
     }
 
     &:hover {
       img {
         filter: grayscale(0);
+        transform: translateY(-5px);
       }
     }
 

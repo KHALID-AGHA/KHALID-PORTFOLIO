@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import './About.scss'
 import { useEffect, useState } from "react";
 import { client, urlFor } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
 import MotionWrap from "../../Wrapper/MotionWrapper";
+import './About.scss';
 
 const About = () => {
 
@@ -27,16 +27,20 @@ const About = () => {
           about.map((about, index) => (
             <motion.div
               whileInView={{ opacity: 1 }}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="app__profile-item"
               key={about.title + index}
             >
-              <img src={urlFor(about.imgUrl)} alt={about.title} />
+              <img
+                src={urlFor(about.imgUrl).width(800).format('webp').url()}
+                loading="lazy"
+                alt={`knowledgeable developer ${about.title}` || "knowledgeable developer"}
+              />
 
-              <h2 className="bold-text" style={{ marginTop: 20, }}>
+              <h3 className="bold-text" style={{ marginTop: 20, }}>
                 {about.title}
-              </h2>
+              </h3>
 
               <p className="p-text" style={{ marginTop: 20, }}>
                 {about.description}

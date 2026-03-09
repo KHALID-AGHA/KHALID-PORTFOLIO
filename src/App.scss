@@ -52,7 +52,7 @@
 }
 
 .head-text {
-  font-size: 2.75rem;
+  font-size: 2rem;
   font-weight: 800;
   text-align: center;
   color: var(--black-color);
@@ -75,7 +75,7 @@
   font-size: 0.8rem;
   text-align: left;
   color: var(--gray-color);
-  line-height: 1.5;
+  line-height: 2;
 
   @media screen and (min-width: 2000px) {
     font-size: 1.75rem;
@@ -84,7 +84,7 @@
 
 .bold-text {
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: bold;
   color: var(--black-color);
   text-align: left;
 
@@ -103,7 +103,6 @@
   align-items: center;
   flex-direction: column;
   padding: 1rem;
-
   div {
     width: 40px;
     height: 40px;
@@ -118,6 +117,7 @@
     align-items: center;
 
     transition: all 0.3s ease-in-out;
+    will-change: background-color, border-color;
 
     svg {
       width: 15px;
@@ -188,8 +188,10 @@
   .app__social {
     width: 1%;
     margin-left: 6px;
+    padding: 0.5rem;
     position: absolute;
     top: 115px;
+    left: 10px;
   }
 
   .copyright {

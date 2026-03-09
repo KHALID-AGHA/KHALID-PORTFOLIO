@@ -8,9 +8,9 @@
 .app__profiles {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   flex-wrap: wrap;
-  margin-top: 2rem;
+  gap: 2rem;
 }
 
 .app__profile-item {
@@ -21,7 +21,7 @@
   flex-direction: column;
   margin: 2rem;
 
-  h2 {
+  h3 {
     color: var(--secondary-color);
   }
 
@@ -46,7 +46,7 @@
   }
 }
 
-    @media screen and (max-width: 900px) {
+@media screen and (max-width: 900px) {
   .app__profile-item {
     width: 100%;
   }

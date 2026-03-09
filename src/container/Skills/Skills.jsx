@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { client, urlFor } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
 import MotionWrap from "../../Wrapper/MotionWrapper";
@@ -14,15 +14,15 @@ const Skills = () => {
   useEffect(() => {
     const query = '*[_type=="skills"]';
     client.fetch(query).then((data) => {
-      data.sort(() => Math.random() * 100 - 50);
-      setSkills(data);
-      setFilterSkills(data);
+      const sortedData = data.sort((a, b) => a.name.localeCompare(b.name));
+      setSkills(sortedData);
+      setFilterSkills(sortedData);
     });
   }, []);
 
   const handleSkillsFilter = (item) => {
     setActiveFilter(item);
-    setAnimateCard({ y: 100, opacity: 0 });
+    setAnimateCard({ y: 50, opacity: 0 });
 
     setTimeout(() => {
       setAnimateCard({ y: 0, opacity: 1 });
@@ -56,30 +56,31 @@ const Skills = () => {
           "project-management",
           "version-control"]
           .map((item, index) => (
-            <div
+            <div aria-label="Skills filter"
               onClick={() => handleSkillsFilter(item)}
               className={`app__skills-filter-item app__flex p-text ${activeFilter === item ? "item-active" : ""}`}
-              key={index}>{item}</div>
+              key={index}>{item.replace('-', ' ')}</div>
           )
           )}
       </div>
       <div className="app__skills-container">
         <motion.div
           animate={animateCard}
-          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          transition={{ duration: 0.5 }}
           className="app__skills-list">
           {filterSkills.map((skill, index) => (
             <motion.div
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
+              whileInView={{ opacity: [0, 1], scale: [0.9, 1] }}
+              transition={{ duration: 0.3 }}
               className="app__skills-item app__flex"
               key={skill.name + index}
 
             >
               <div className="app__flex">
-                <img src={urlFor(skill.icon).url()} alt={skill.name}
-                  crossOrigin="anonymous"
+                <img src={urlFor(skill.icon).fit('crop').auto('format').url() }
+                  alt={`${skill.name} icon` || "skill icon"}
                   loading="lazy"
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <p className="p-text">{skill.name}</p>

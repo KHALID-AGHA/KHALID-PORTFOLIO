@@ -1,13 +1,7 @@
-import React from "react";
-import "./Header.scss";
 import { motion } from "framer-motion";
-import myImg2 from "../../assets/myImage.png";
-import circle_bg from "../../assets/circle.svg";
-import cheerful from "../../assets/cheerful.png";
-import node from "../../assets/node.png";
-import nextjs3 from "../../assets/nextjs3.png";
-import react from "../../assets/react.png";
+import { images } from '../../constants';
 import AppWrapper from "../../Wrapper/AppWrapper";
+import "./Header.scss";
 
 const Header = () => {
   const scaleVariants = {
@@ -23,6 +17,13 @@ const Header = () => {
 
   return (
     <div id="home" className="app__header app__flex">
+      <img
+        src={images.bgImg}
+        alt="background image for hero section"
+        className="app__header-bg"
+        fetchpriority="high"
+        loading="eager"
+      />
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
@@ -39,10 +40,19 @@ const Header = () => {
 
           <div className="tag-cmp app__flex">
             <span>
-              <img src={cheerful} alt="Cheerful" />
+              <img
+                src={images.cheerful}
+                style={{ objectFit: 'contain' }}
+                alt="Cheerful Emoji"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+                width="100"
+                height="100"
+              />
             </span>
             <p className="p-text">Web Developer</p>
-            <h1 className="p-text">Cheerful Programmer</h1>
+            <p className="p-text">Cheerful Programmer</p>
           </div>
         </div>
       </motion.div>
@@ -52,11 +62,17 @@ const Header = () => {
         transition={{ duration: 0.5, delayChildren: 0.5 }}
         className="app__header-img"
       >
-        <img src={myImg2} alt="profile_bg" />
+        <img
+          src={images.myImg2}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          alt="Khaled Agha Profile"
+        />
         <motion.img
           whileInView={{ scale: [0, 1] }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          src={circle_bg}
+          src={images.circle_bg}
           alt="profile_circle"
           className="overlay_circle"
         />
@@ -67,9 +83,16 @@ const Header = () => {
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[nextjs3, node, react].map((circle, index) => (
+        {[images.nextjs3, images.node, images.react].map((circle, index) => (
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
-            <img src={circle} alt="profile_bg" />
+            <img src={circle} alt="tech_stack" style={{
+              width: '60%',
+              height: '60%',
+              objectFit: 'contain'
+            }}
+              loading="eager"
+              decoding="async"
+              fetchpriority="high" />
           </div>
         ))}
       </motion.div>
