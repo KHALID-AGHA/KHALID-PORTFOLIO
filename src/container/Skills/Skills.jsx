@@ -80,7 +80,7 @@ const Skills = () => {
                 <img src={urlFor(skill.icon).fit('crop').auto('format').url() }
                   alt={`${skill.name} icon` || "skill icon"}
                   loading="lazy"
-                  style={{ objectFit: 'cover' }}
+                  // style={{ objectFit: 'cover' }}
                 />
               </div>
               <p className="p-text">{skill.name}</p>

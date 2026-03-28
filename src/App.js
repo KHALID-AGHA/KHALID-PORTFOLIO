@@ -8,9 +8,11 @@ import {
 } from "./container/index";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.scss";
+import { Analytics } from "@vercel/analytics/react";
 function App() {
   return (
     <div className="app">
+      <Analytics />
       <main>
         <Navbar />
         <Header />
