@@ -14,7 +14,7 @@ const Navbar = () => {
         />
       </div>
       <ul className="app__navbar-links">
-        {['home', 'about', 'work', 'skills', 'numbers', 'contact'].map((item) => (
+        {['home', 'about', 'work', 'skills', 'numbers', 'aitools', 'contact'].map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div />
             <a href={`#${item}`} aria-label={`Go to ${item} section`}>{item}</a>
@@ -32,9 +32,9 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)} aria-label="Close Menu" />
             <ul>
-              {['home', 'about', 'work', 'skills', 'numbers', 'contact'].map((item) => (
+              {['home', 'about', 'work', 'skills', 'numbers', 'aitools', 'contact'].map((item) => (
                 <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)} aria-label={`Go to ${item} section` }>
+                  <a href={`#${item}`} onClick={() => setToggle(false)} aria-label={`Go to ${item} section`}>
                     {item}
                   </a>
                 </li>

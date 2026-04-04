@@ -1,14 +1,15 @@
+import { Analytics } from "@vercel/analytics/react";
+import "./App.scss";
+import Navbar from "./components/Navbar/Navbar";
 import {
   About,
-  Skills,
-  Header,
-  Work,
-  Numbers,
   Contact,
+  Header,
+  Numbers,
+  Skills,
+  Work,
+  AITools,
 } from "./container/index";
-import Navbar from "./components/Navbar/Navbar";
-import "./App.scss";
-import { Analytics } from "@vercel/analytics/react";
 function App() {
   return (
     <div className="app">
@@ -20,6 +21,7 @@ function App() {
         <Work />
         <Skills />
         <Numbers />
+        <AITools />
         <Contact />
       </main>
     </div>
