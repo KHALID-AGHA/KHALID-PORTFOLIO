@@ -85,11 +85,14 @@ const Header = () => {
       >
         {[images.nextjs3, images.node, images.react].map((circle, index) => (
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
-            <img src={circle} alt="tech_stack" style={{
-              width: '60%',
-              height: '60%',
-              objectFit: 'contain'
-            }}
+            <img src={circle} alt="tech_stack"
+              width="75"
+              height="75"
+              style={{
+                width: '60%',
+                height: '60%',
+                objectFit: 'contain'
+              }}
               loading="eager"
               decoding="async"
               fetchpriority="high" />

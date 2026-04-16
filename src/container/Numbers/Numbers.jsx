@@ -1,28 +1,13 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import CountUp from 'react-countup';
-import { client, urlFor } from '../../client';
+import { urlFor } from '../../client';
 import AppWrapper from '../../Wrapper/AppWrapper';
 import MotionWrap from '../../Wrapper/MotionWrapper';
-
 import './Numbers.scss';
-const Numbers = () => {
-    const [experience, setExperience] = useState([]);
-    const [brands, setBrands] = useState([]);
 
-    useEffect(() => {
-        const query = '*[_type == "experience"]';
 
-        client.fetch(query).then((data) => {
-            setExperience(data);
-        });
+const Numbers = ({ experience, brands }) => {
 
-        const queryB = '*[_type == "brands"]';
-
-        client.fetch(queryB).then((data) => {
-            setBrands(data);
-        });
-    }, []);
 
     return (
         <>
@@ -76,8 +61,6 @@ const Numbers = () => {
     )
 }
 
-export default AppWrapper(
-    MotionWrap(Numbers, 'app__numbers'),
-    'numbers',
-    'app__primarybg',
-);
+
+
+export default AppWrapper(MotionWrap(Numbers, 'app__numbers'), 'numbers', 'app__primarybg');

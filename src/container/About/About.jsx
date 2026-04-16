@@ -1,19 +1,11 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { client, urlFor } from "../../client";
+import { urlFor } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
 import MotionWrap from "../../Wrapper/MotionWrapper";
 import './About.scss';
 
-const About = () => {
+const About = ({ data }) => {
 
-  const [about, setAbout] = useState([])
-
-  useEffect(() => {
-    const query = '*[_type=="abouts"]'
-    client.fetch(query)
-      .then((data) => setAbout(data))
-  }, [])
 
   return (
     <>
@@ -24,7 +16,7 @@ const About = () => {
       <div className="app__profiles">
         {
 
-          about.map((about, index) => (
+          data.map((about, index) => (
             <motion.div
               whileInView={{ opacity: 1 }}
               whileHover={{ scale: 1.05 }}
@@ -34,7 +26,7 @@ const About = () => {
             >
               <img
                 src={urlFor(about.imgUrl).width(800).format('webp').url()}
-                loading="lazy"
+                fetchpriority="high"
                 alt={`knowledgeable developer ${about.title}` || "knowledgeable developer"}
               />
 
@@ -54,9 +46,4 @@ const About = () => {
   )
 }
 
-
-export default AppWrapper(
-  MotionWrap(About, 'app__about'),
-  'about',
-  'app__whitebg',
-);
+export default AppWrapper(MotionWrap(About, 'app__about'), 'about', 'app__whitebg');

@@ -1,24 +1,22 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AiFillEye } from "react-icons/ai";
-import { client, urlFor } from "../../client";
+import { urlFor } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
 import MotionWrap from "../../Wrapper/MotionWrapper";
 import "./Work.scss";
 
-const Work = () => {
-  const [works, setWorks] = useState([]);
+const Work = ({ data }) => {
   const [filterWork, setFilterWork] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 
+
   useEffect(() => {
-    const query = '*[_type == "works"]';
-    client.fetch(query).then((data) => {
-      setWorks(data);
-      setFilterWork(data);
-    });
-  }, []);
+    if (data) {
+       setFilterWork(data);
+    }
+  }, [data]);
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
@@ -28,10 +26,10 @@ const Work = () => {
       setAnimateCard({ y: 0, opacity: 1 });
 
       if (item.toLowerCase() === "all") {
-        setFilterWork(works);
+        setFilterWork(data);
       } else {
         setFilterWork(
-          works.filter((work) =>
+          data.filter((work) =>
             work.category?.toLowerCase() === item.toLowerCase() ||
             work.hosted?.toLowerCase() === item.toLowerCase() ||
             work.tags?.includes(item)
@@ -70,7 +68,7 @@ const Work = () => {
               <div className="app__work-img app__flex">
                 <img
                   src={urlFor(work.imgUrl).width(450).format('webp').url()}
-                  loading="lazy"
+                  loading={index === 0 ? "eager" : "lazy"}
                   alt={`${work.name} project` || "project image"}
                 />
 
@@ -118,8 +116,4 @@ const Work = () => {
   );
 };
 
-export default AppWrapper(
-  MotionWrap(Work, "app__works"),
-  "work",
-  "app__primarybg"
-);
+export default AppWrapper(MotionWrap(Work, 'app__works'), 'work', 'app__primarybg');

@@ -1,8 +1,40 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./assets/fonts/dm-sans-v17-latin-300.woff2") format("woff2");
+}
+
+/* 400 - Regular */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/dm-sans-v17-latin-regular.woff2") format("woff2");
+}
+
+/* 500 - Medium */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/dm-sans-v17-latin-500.woff2") format("woff2");
+}
+
+/* 700 - Bold */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/dm-sans-v17-latin-700.woff2") format("woff2");
+}
 
 :root {
   --font-base: "DM Sans", sans-serif;
-
   --primary-color: #edf2f8;
   --secondary-color: #313bac;
   --black-color: #030303;

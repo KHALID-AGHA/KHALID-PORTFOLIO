@@ -1,40 +1,37 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { client } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
 import MotionWrap from "../../Wrapper/MotionWrapper";
 import './AITools.scss';
-const AITools = () => {
 
-
-  const [tools, setTools] = useState([]);
+const AITools = ({ data }) => {
   const [filterTools, setFilterTools] = useState([]);
   const [categories, setCategories] = useState([]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
 
+  //  
+
   useEffect(() => {
-    const query = '*[_type=="aitools"]';
-    client.fetch(query).then((data) => {
-      setTools(data);
+    if (data) {
       setFilterTools(data);
       const uniqueCats = ["all", ...new Set(data.flatMap(tool => tool.category || []))];
       setCategories(uniqueCats);
-    });
-  }, []);
+    }
+  }, [data]);
 
   const handleFilter = (item) => {
     setActiveFilter(item);
-    setFilterTools(item === "all" ? tools : tools.filter(t => t.category?.includes(item)));
+    setFilterTools(item === "all" ? data : data.filter(t => t.category?.includes(item)));
     setAnimateCard({ y: 50, opacity: 0 });
 
     setTimeout(() => {
       setAnimateCard({ y: 0, opacity: 1 });
 
       if (item === 'all') {
-        setFilterTools(tools);
+        setFilterTools(data);
       } else {
-        setFilterTools(tools.filter((tool) => tool.category?.includes(item)));
+        setFilterTools(data.filter((tool) => tool.category?.includes(item)));
       }
     }, 200)
   };
@@ -77,14 +74,7 @@ const AITools = () => {
               >
 
                 <div>
-                  <p className="p-text p-link">
-                    <a href={tool.link}
-                      key={tool.name + index} target="_blank"
-                      aria-label={`Go to ${tool.name} section`}>
-                      {tool.name}
-
-                    </a>
-                  </p>
+                  <p className="p-text p-link">{tool.name}</p>
                   <span className="p-text">{tool.useCase}</span>
                 </div>
                 <svg
@@ -109,8 +99,4 @@ const AITools = () => {
   );
 };
 
-export default AppWrapper(
-  MotionWrap(AITools, "app__ais"),
-  "aitools",
-  'app__whitebg',
-);
+export default AppWrapper(MotionWrap(AITools, 'app__ais'), 'aitools', 'app__whitebg');

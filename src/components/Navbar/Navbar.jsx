@@ -9,8 +9,11 @@ const Navbar = () => {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="Khaled Agha Logo"
-          width={"90px"} height={"90%"}
+        <img
+          src={images.logo}
+          alt="Khaled Agha Logo"
+          width={113}
+          height={90}
         />
       </div>
       <ul className="app__navbar-links">

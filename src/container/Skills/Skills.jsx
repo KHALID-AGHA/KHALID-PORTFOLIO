@@ -1,24 +1,21 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { client, urlFor } from "../../client";
+import { urlFor } from "../../client";
 import AppWrapper from "../../Wrapper/AppWrapper";
 import MotionWrap from "../../Wrapper/MotionWrapper";
 import "./Skills.scss";
 
-const Skills = () => {
-  const [skills, setSkills] = useState([]);
+const Skills = ({ data }) => {
   const [filterSkills, setFilterSkills] = useState([])
   const [activeFilter, setActiveFilter] = useState("all");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 })
 
   useEffect(() => {
-    const query = '*[_type=="skills"]';
-    client.fetch(query).then((data) => {
-      const sortedData = data.sort((a, b) => a.name.localeCompare(b.name));
-      setSkills(sortedData);
+    if (data && data.length > 0) {
+      const sortedData = [...data].sort((a, b) => a.name.localeCompare(b.name));
       setFilterSkills(sortedData);
-    });
-  }, []);
+    }
+  }, [data]); // Only runs when data prop changes
 
   const handleSkillsFilter = (item) => {
     setActiveFilter(item);
@@ -28,9 +25,9 @@ const Skills = () => {
       setAnimateCard({ y: 0, opacity: 1 });
 
       if (item === 'all') {
-        setFilterSkills(skills);
+        setFilterSkills(data);
       } else {
-        setFilterSkills(skills.filter((skill) => skill.tags?.includes(item)));
+        setFilterSkills(data.filter((skill) => skill.tags?.includes(item)));
       }
     }, 200);
   }
@@ -77,10 +74,10 @@ const Skills = () => {
 
             >
               <div className="app__flex">
-                <img src={urlFor(skill.icon).fit('crop').auto('format').url() }
+                <img src={urlFor(skill.icon).fit('crop').auto('format').url()}
                   alt={`${skill.name} icon` || "skill icon"}
                   loading="lazy"
-                  // style={{ objectFit: 'cover' }}
+                // style={{ objectFit: 'cover' }}
                 />
               </div>
               <p className="p-text">{skill.name}</p>
@@ -92,8 +89,5 @@ const Skills = () => {
   );
 };
 
-export default AppWrapper(
-  MotionWrap(Skills, "app__skills"),
-  "skills",
-  "app__whitebg"
-);
+export default AppWrapper(MotionWrap(Skills, 'app__skills'), 'skills', 'app__whitebg');
+
